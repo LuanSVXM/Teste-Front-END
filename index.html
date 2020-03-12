@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>Teste Front-End</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body ng-app="app">
+
+    <div ui-view ng-controller="mainController">
+        <navbar class="navbar navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">Meus Filmes</a>
+            <button class="btn btn-danger " ng-click="apagar(filmes2)" ng-show="selecionadoTrue(filmes2)"> Apagar </button>
+            <form class="form-inline">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" ng-model="search">
+            </form>
+            </nav>
+            <table class="table table-dark table-hover">
+                <tr>
+                    <th>#</th>
+                    <th>Imagen</th>
+                    <th>Titulo</th>
+                    <th>Descriçao</th>
+                    <th>Avaliaçoes</th>
+                </tr>
+                <tr ng-repeat="x in filmes2 | filter:{titulo:search}" ng-class="{selecionado: x.selec}">
+                    <td><input type="checkbox" ng-model="x.selec"></td>
+                    <td><img src="{{x.poster}}" class='capafilme'></td>
+                    <td><a href="{{x.link}}">{{x.titulo}}</a></td>
+                    <td>{{x.sinopse}}</td>
+                    <td>
+                        <div ng-repeat="y in x.rankimg track by $index"><img src="{{y}}"></div>
+                        <input type="number" ng-model="x.rating" ng-click="f1(x)" min="0" max="5"> </td>
+                </tr>
+
+            </table>
+    </div>
+    <script src="api/filmes.js"></script>
+    <script src="js/angular.js"></script>
+    <script src="app.js"></script>
+    <script src="scripts/services/mainService.js"></script>
+    <script src="scripts/controllers/mainController.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+
+</html>

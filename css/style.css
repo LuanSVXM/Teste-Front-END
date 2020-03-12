@@ -1,0 +1,37 @@
+.capafilme {
+    width: 120px;
+    height: 180px;
+}
+
+table {
+    align-items: center;
+    color: blue;
+    border-collapse: collapse;
+}
+
+td {
+    border: 2px black solid;
+    padding: 10px;
+    text-align: center;
+}
+
+td>div {
+    display: inline;
+}
+
+a {
+    color: white;
+    font-style: oblique;
+}
+
+th {
+    text-align: center;
+}
+
+.selecionado {
+    background-color: brown;
+}
+
+.selecionado:hover {
+    background-color: brown !important;
+}
